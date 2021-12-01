@@ -1,28 +1,32 @@
-type netlifyEvent = {
-  body: option<string>,
-  isBase64Encoded: bool,
+module Netlify = {
+  type event = {
+    body: option<string>,
+    isBase64Encoded: bool,
+  }
+
+  type context = {thing: string}
+
+  type response = {
+    body: string,
+    headers: Js.Dict.t<string>,
+    statusCode: int,
+  }
+
+  let response = (statusCode, body) => {
+    statusCode: statusCode,
+    headers: Js.Dict.fromArray([("content-type", "application/json")]),
+    body: Js.Json.stringify(Js.Json.string(body)),
+  }
 }
 
-type netlifyContext = {thing: string}
-
-type netlifyResponse = {
-  body: string,
-  headers: Js.Dict.t<string>,
-  statusCode: int,
-}
-
-let netlifyResponse = (statusCode, body: string) => {
-  statusCode: statusCode,
-  headers: Js.Dict.fromArray([("content-type", "application/json")]),
-  body: Js.Json.stringify(Js.Json.string(body)),
-}
-
-let handler = (event: netlifyEvent, context: netlifyContext): netlifyResponse => {
+let handler = (event: Netlify.event, context: Netlify.context): Netlify.response => {
   let body = event.body
 
+  Js.log(body)
+
   let response = switch body {
-  | Some(body) => netlifyResponse(200, body)
-  | None => netlifyResponse(501, "Empty request body.")
+  | Some(body) => Netlify.response(200, body)
+  | None => Netlify.response(501, "Empty request body.")
   }
   response
 }
