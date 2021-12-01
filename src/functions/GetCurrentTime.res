@@ -17,10 +17,14 @@ module Netlify = {
     headers: Js.Dict.fromArray([("content-type", "application/json")]),
     body: Js.Json.stringify(Js.Json.string(body)),
   }
+
+  type t = (event, context) => response
 }
 
-let handler = (event: Netlify.event, context: Netlify.context): Netlify.response => {
+let handler: Netlify.t = (event, context) => {
   let body = event.body
+
+  // add decoder
 
   Js.log(body)
 
