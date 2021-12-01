@@ -59,6 +59,6 @@ patches/mtime-cache.json
 spec/fixtures/logo.png
 
 # ReScript
-# /lib/
+/lib/
 .bsb.lock
 .merlin

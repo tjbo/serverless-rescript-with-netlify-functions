@@ -1,13 +1,13 @@
 rescript = 1
 rule astj
   command = /Users/tjbo/Projects/serverless-rescript-with-netlify-functions/node_modules/rescript/darwin/bsc.exe  -bs-v 9.1.4 -bs-jsx 3  -absname -bs-ast -o $out $i
-o ./src/_functions/GetCurrentTime.ast : astj ../.././src/_functions/GetCurrentTime.res
+o ./src/functions/GetCurrentTime.ast : astj ../.././src/functions/GetCurrentTime.res
 rule deps
-  command = /Users/tjbo/Projects/serverless-rescript-with-netlify-functions/node_modules/rescript/darwin/bsb_helper.exe -hash d7119f176768530dc93aae5d7b1a43cb $in
+  command = /Users/tjbo/Projects/serverless-rescript-with-netlify-functions/node_modules/rescript/darwin/bsb_helper.exe -hash 5570177b9326014734c6e0d57563a9a7 $in
   restat = 1
-o ./src/_functions/GetCurrentTime.d : deps ./src/_functions/GetCurrentTime.ast
+o ./src/functions/GetCurrentTime.d : deps ./src/functions/GetCurrentTime.ast
 rule mij
-  command = /Users/tjbo/Projects/serverless-rescript-with-netlify-functions/node_modules/rescript/darwin/bsc.exe -I ./src/_functions -I ./src/   -bs-package-name rescript-serverless-setup -bs-package-output commonjs:lib/js/$in_d:.js $i
+  command = /Users/tjbo/Projects/serverless-rescript-with-netlify-functions/node_modules/rescript/darwin/bsc.exe -I ./src/functions -I ./src/   -bs-package-name rescript-serverless-setup -bs-package-output commonjs:lib/js/$in_d:.js $i
   dyndep = 1
   restat = 1
-o ./src/_functions/GetCurrentTime.cmj ./src/_functions/GetCurrentTime.cmi ../js/./src/_functions/GetCurrentTime.js : mij ./src/_functions/GetCurrentTime.ast
+o ./src/functions/GetCurrentTime.cmj ./src/functions/GetCurrentTime.cmi ../js/./src/functions/GetCurrentTime.js : mij ./src/functions/GetCurrentTime.ast
