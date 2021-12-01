@@ -1,0 +1,17 @@
+{
+  "name": "rescript-serverless-setup",
+  "sources": [
+    {
+      "dir": "./src/",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "commonjs",
+      "in-source": false
+    }
+  ],
+  "suffix": ".js",
+  "reason": { "react-jsx": 3 }
+}

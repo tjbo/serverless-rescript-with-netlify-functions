@@ -1,0 +1,13 @@
+{
+  "name": "serverless-rescript-with-netlify-functions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "rescript": "rescript build -w -with-deps"
+  },
+  "dependencies": {
+    "@netlify/functions": "^0.10.0",
+    "rescript": "^9.1.4"
+  }
+}
