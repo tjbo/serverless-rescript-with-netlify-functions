@@ -1,2 +1,2 @@
 [functions]
-    directory = "src/functions/"
+    directory = "lib/js/src/functions/"

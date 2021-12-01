@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "rescript": "rescript build -w -with-deps"
+    "rescript": "rescript build -w"
   },
   "dependencies": {
     "@netlify/functions": "^0.10.0",
