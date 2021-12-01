@@ -1,3 +1,4 @@
+[build]
 [functions]
     directory = "lib/js/src/functions/"
     node_bundler = "esbuild"
