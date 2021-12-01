@@ -1,0 +1,10 @@
+rescript = 1
+rule cp
+  command = cp $i $out
+rule touch
+ command = touch $out
+o GetCurrentTime.cmi : cp ../bs/./src/_functions/GetCurrentTime.cmi
+o GetCurrentTime.cmj : cp ../bs/./src/_functions/GetCurrentTime.cmj
+o GetCurrentTime.cmt : cp ../bs/./src/_functions/GetCurrentTime.cmt
+o GetCurrentTime.res : cp ../.././src/_functions/GetCurrentTime.res
+build install.stamp : touch GetCurrentTime.cmi GetCurrentTime.cmj 
